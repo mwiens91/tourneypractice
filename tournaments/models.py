@@ -5,23 +5,18 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
     wins = models.PositiveIntegerField()
 
-
-class Matches(models.Model):
-    winner = models.OneToOneField(Profile, on_delete=models.CASCADE)
-    player1 = models.CharField(max_length=30)
-    player2 = models.CharField(max_length=30)
-    game-id = models.PositiveIntegerField()
+class Match(models.Model):
+    winner = models.ForeignKey(Profile, on_delete=models.CASADE)
+    player1 = models.ForeignKey(Profile, on_delete=models.CASADE)
+    player2 = models.ForeignKey(Profile, on_delete=models.CASADE)
+    tourney = models.ForeignKey(Tourney, on_delete=models.CASADE)
 
 class Tourney(models.Model):
-    matches = models.ForeignKey(Matches, on_delete=models.CASADE)
-    size = models.PositiveIntegerField()
+    player = models.ManyToManyField(Profile)
     name = models.CharField(max_length=30,blank=True)
-    winner = models.CharField(max_length=30,blank=True)
+    winner = models.ForeignKey(Profile, on_delete=models.CASADE)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
