@@ -22,19 +22,23 @@ class Match(models.Model):
     winner = models.ForeignKey(Profile,
                                on_delete=models.CASCADE,
                                null=True,
-                               blank=True,)
+                               blank=True,
+                               related_name='winner',)
     player1 = models.ForeignKey(Profile,
                                 on_delete=models.CASCADE,
                                 null=True,
-                                blank=False,)
+                                blank=False,
+                                related_name='player1',)
     player2 = models.ForeignKey(Profile,
                                 on_delete=models.CASCADE,
                                 null=True,
-                                blank=False,)
+                                blank=False,
+                                related_name='player2',)
     tourney = models.ForeignKey(Tourney,
                                 on_delete=models.CASCADE,
                                 null=True,
-                                blank=False,)
+                                blank=False,
+                                related_name='tourney')
 
 class Tourney(models.Model):
     player = models.ManyToManyField(Profile)
@@ -44,7 +48,8 @@ class Tourney(models.Model):
     winner = models.ForeignKey(Profile,
                                on_delete=models.CASCADE,
                                null=True,
-                               blank=True,)
+                               blank=True,
+                               related_name='winner',)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
