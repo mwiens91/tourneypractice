@@ -8,21 +8,31 @@ class Profile(models.Model):
                                 on_delete=models.CASCADE,)
     wins = models.PositiveIntegerField()
 
+class Tourney(models.Model):
+    player = models.ManyToManyField(Profile)
+    name = models.CharField(max_length=30,
+                            null=True,
+                            blank=False,)
+    winner = models.ForeignKey(Profile,
+                               on_delete=models.CASCADE,
+                               null=True,
+                               blank=True,)
+
 class Match(models.Model):
     winner = models.ForeignKey(Profile,
-                               on_delete=models.CASADE,
+                               on_delete=models.CASCADE,
                                null=True,
                                blank=True,)
     player1 = models.ForeignKey(Profile,
-                                on_delete=models.CASADE,
+                                on_delete=models.CASCADE,
                                 null=True,
                                 blank=False,)
     player2 = models.ForeignKey(Profile,
-                                on_delete=models.CASADE,
+                                on_delete=models.CASCADE,
                                 null=True,
                                 blank=False,)
     tourney = models.ForeignKey(Tourney,
-                                on_delete=models.CASADE,
+                                on_delete=models.CASCADE,
                                 null=True,
                                 blank=False,)
 
@@ -32,7 +42,7 @@ class Tourney(models.Model):
                             null=True,
                             blank=False,)
     winner = models.ForeignKey(Profile,
-                               on_delete=models.CASADE,
+                               on_delete=models.CASCADE,
                                null=True,
                                blank=True,)
 
