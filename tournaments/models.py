@@ -16,25 +16,25 @@ class Match(models.Model):
     player1 = models.ForeignKey(Profile,
                                 on_delete=models.CASADE,
                                 null=True,
-                                blank=True,)
+                                blank=False,)
     player2 = models.ForeignKey(Profile,
                                 on_delete=models.CASADE,
                                 null=True,
-                                blank=True,)
+                                blank=False,)
     tourney = models.ForeignKey(Tourney,
                                 on_delete=models.CASADE,
                                 null=True,
-                                blank=True,)
+                                blank=False,)
 
 class Tourney(models.Model):
     player = models.ManyToManyField(Profile)
     name = models.CharField(max_length=30,
-                            blank=False,
-                            null=True,)
+                            null=True,
+                            blank=False,)
     winner = models.ForeignKey(Profile,
                                on_delete=models.CASADE,
-                               blank=True,
-                               null=True,)
+                               null=True,
+                               blank=True,)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
