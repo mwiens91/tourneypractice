@@ -18,7 +18,7 @@ class Matches(models.Model):
     game-id = models.PositiveIntegerField()
 
 class Tourney(models.Model):
-
+    matches = models.ForeignKey(Matches, on_delete=models.CASADE)
     size = models.PositiveIntegerField()
     name = models.CharField(max_length=30,blank=True)
     winner = models.CharField(max_length=30,blank=True)
