@@ -22,7 +22,6 @@ class Tourney(models.Model):
                                null=True,
                                blank=True,
                                related_name='tourneywinner')
-
     def __str__(self):
         return '%s' % self.name
 
