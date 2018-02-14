@@ -9,6 +9,9 @@ class Profile(models.Model):
                                 null=True)
     wins = models.PositiveIntegerField(default=0)
 
+    def __str__(self):
+        return '%s' % self.user.username
+
 class Tourney(models.Model):
     player = models.ManyToManyField(Profile)
     name = models.CharField(max_length=30,
@@ -19,6 +22,9 @@ class Tourney(models.Model):
                                null=True,
                                blank=True,
                                related_name='tourneywinner')
+
+    def __str__(self):
+        return '%s' % self.name
 
 class Match(models.Model):
     winner = models.ForeignKey(Profile,
@@ -41,6 +47,8 @@ class Match(models.Model):
                                 null=True,
                                 blank=False,
                                 related_name='tourney')
+    def __str__(self):
+        return '%s : Match %s' % (self.tourney.name, self.id)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
