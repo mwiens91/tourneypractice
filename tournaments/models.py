@@ -13,10 +13,16 @@ class Profile(models.Model):
         return '%s' % self.user.username
 
 class Tourney(models.Model):
-    player = models.ManyToManyField(Profile)
     name = models.CharField(max_length=30,
                             null=True,
                             blank=False,)
+    game = models.CharField(max_length=30,
+                                    null=True,
+                                    blank=False,)
+    info = models.TextField(max_length=200,
+                            null=True,
+                            blank=False,)
+    player = models.ManyToManyField(Profile)
     winner = models.ForeignKey(Profile,
                                on_delete=models.CASCADE,
                                null=True,

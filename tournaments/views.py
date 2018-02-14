@@ -13,3 +13,4 @@ def tourney(request,tourney_id):
     numplayers = thistourney.player.count()
     return render(request,'tourney.html', {'tourney': thistourney,
                                             'numplayers': numplayers})
+
