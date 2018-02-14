@@ -1,0 +1,18 @@
+body {
+    font-family: "Permanent Marker", sans-serif;
+    position: relative;
+    margin: 2em;
+}
+
+.bodywrapper {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=url]
+{
+    width: 100%;
+}
