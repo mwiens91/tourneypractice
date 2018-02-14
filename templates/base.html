@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" type ="text/css" href="{% static "/style.css" %}">
+		<title>{% block title %}{% endblock %}</title>
+	</head>
+	<body>
+        <div class="bodywrapper">
+            <div style="text-align: center">
+                <h1>Tyler 1 all stars</h1>
+            </div>
+
+            {% block content %}
+            {% endblock %}
+        </div>
+	</body>
+</html>
