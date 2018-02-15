@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Tourney
@@ -10,11 +10,14 @@ def home(request):
     context = {'tourney_list': tourney_list}
     return render(request, 'home.html', context)
 
+@login_required
 def tourney(request,tourney_id):
     thistourney = Tourney.objects.get(id=tourney_id)
     numplayers = thistourney.player.count()
     return render(request,'tourney.html', {'tourney': thistourney,
                                             'numplayers': numplayers})
+def logout_view(request):
+    logout(request)
 
 def signup(request):
     if request.method == 'POST':

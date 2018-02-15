@@ -6,7 +6,7 @@
 <p style="text-align:left;">
     Hello, {{ user.get_username }}
     <span style ="float:right;"> 
-        <a href="/login">logout</a> 
+        <a href="{% url 'logout' %}">logout</a> 
     </span>
 </p>
 <h2> Upcoming Tourneys: </h2>
