@@ -124,4 +124,5 @@ STATICFILES_DIRS = [
 ]
 
 # Login url redirections (following tutorial)
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
