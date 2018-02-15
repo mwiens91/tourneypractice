@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{tourney.name}}{% endblock %}
+
+{% block content %}
+<p style="text-align:left;">
+    {{ user.get_username }}
+    <span style ="float:right;"> 
+        <a href="/login">logout</a> 
+    </span>
+</p>
+
+<p> {{tourney.name}}</p>
+<p> Tourney Size: {{numplayers}} </p>
+<p> Game: {{tourney.game}} </p>
+<p> Info: <br/> {{tourney.info}} </p>
+{% endblock %}
+

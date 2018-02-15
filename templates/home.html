@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<p style="text-align:left;">
+    Hello, {{ user.get_username }}
+    <span style ="float:right;"> 
+        <a href="/login">logout</a> 
+    </span>
+</p>
+<h2> Upcoming Tourneys: </h2>
+{% if tourney_list %}
+    <ul>
+    {% for tourney in tourney_list %}
+        <li><a href="/tourney/{{ tourney.id }}/">{{tourney.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tourneys are available.</p>
+{% endif %}
+{% endblock %}
