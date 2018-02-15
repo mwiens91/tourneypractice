@@ -34,5 +34,5 @@ def signup(request):
             login(request, user)
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = UserForm()
     return render(request, 'signup.html', {'form': form})
